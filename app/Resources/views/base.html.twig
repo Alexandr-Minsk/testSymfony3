@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+    </head>
+    <body>
+    <div class="container">
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li {% if page == 'home' %} class="active" {% endif %}>
+                        <a href="/">Главная</a>
+                    </li>
+                    <li {% if page == 'catalog' %} class="active" {% endif %}>
+                        <a href="{{ path('catalog') }}">Каталог</a>
+                    </li>
+                    <li {% if page == 'contacts' %} class="active" {% endif %}>
+                        <a href="{{ path('contacts') }}">Обратная связь</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Тест Symfony3</h3>
+        </div>
+        {% block body %}{% endblock %}
+        <footer class="footer">
+            <p>&copy; 2017 Company, Inc.</p>
+        </footer>
+
+    </div> <!-- /container -->
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
