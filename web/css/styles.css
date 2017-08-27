@@ -1,0 +1,24 @@
+.catalog-element {
+  float: left;
+}
+.catalog-element img {
+  width: 100%;
+}
+.category-element {
+  float: left;
+  padding-bottom: 30px;
+}
+.category-element div.category-element-container {
+  border: 1px solid gray;
+  text-align: center;
+}
+.category-element div.category-element-container img {
+  width: 60%;
+}
+.category-element div.category-element-container span.price {
+  font-size: 1.2em;
+  color: darkolivegreen;
+}
+.form-group {
+  margin-top: 20px;
+}

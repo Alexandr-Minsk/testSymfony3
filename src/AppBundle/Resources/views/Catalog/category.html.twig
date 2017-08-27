@@ -1,0 +1,8 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Catalog:category{% endblock %}
+
+{% block body %}
+    <h1>{{ category.name }}</h1>
+    {{ include('AppBundle:block:product.html.twig') }}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Home:index{% endblock %}
+
+{% block body %}
+        <h1>Главная</h1>
+        <img src="{{ asset('images/home-top.jpg') }}" style="width: 100%">
+
+        <h3>Популярные категории</h3>
+        {{ include('AppBundle:block:category.html.twig', { categories : popularCategories}) }}
+
+        <h3>Акции хиты и новинки</h3>
+        {{ include('AppBundle:block:product.html.twig', { products : specialProducts}) }}
+
+
+{% endblock %}

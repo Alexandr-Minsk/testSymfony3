@@ -1,0 +1,17 @@
+index:
+    path:     /
+    defaults: { _controller: AppBundle:Home:index }
+contacts:
+    path:     /contacts
+    defaults: { _controller: AppBundle:Home:contacts }
+catalog:
+    path:     /catalog
+    defaults: { _controller: AppBundle:Catalog:catalog }
+
+category:
+    path:     /catalog/{categorySlug}
+    defaults: { _controller: AppBundle:Catalog:category }
+
+product:
+    path:     /catalog/{categorySlug}/{productSlug}
+    defaults: { _controller: AppBundle:Catalog:product }

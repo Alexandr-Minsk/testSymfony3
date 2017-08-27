@@ -1,0 +1,10 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Каталог товараов{% endblock %}
+
+{% block body %}
+<h1>Каталог товараов</h1>
+    <div class="row">
+        {{ include('AppBundle:block:category.html.twig') }}
+    </div>
+{% endblock %}
