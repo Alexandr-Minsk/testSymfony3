@@ -12,19 +12,21 @@
     <body>
     <div class="container">
         <div class="header clearfix">
-            <nav>
-                <ul class="nav nav-pills pull-right">
-                    <li {% if page == 'home' %} class="active" {% endif %}>
-                        <a href="/">Главная</a>
-                    </li>
-                    <li {% if page == 'catalog' %} class="active" {% endif %}>
-                        <a href="{{ path('catalog') }}">Каталог</a>
-                    </li>
-                    <li {% if page == 'contacts' %} class="active" {% endif %}>
-                        <a href="{{ path('contacts') }}">Обратная связь</a>
-                    </li>
-                </ul>
-            </nav>
+            {% if page is defined %}
+                <nav>
+                    <ul class="nav nav-pills pull-right">
+                        <li {% if page == 'home' %} class="active" {% endif %}>
+                            <a href="/">Главная</a>
+                        </li>
+                        <li {% if page == 'catalog' %} class="active" {% endif %}>
+                            <a href="{{ path('catalog') }}">Каталог</a>
+                        </li>
+                        <li {% if page == 'contacts' %} class="active" {% endif %}>
+                            <a href="{{ path('contacts') }}">Обратная связь</a>
+                        </li>
+                    </ul>
+                </nav>
+            {% endif %}
             <h3 class="text-muted">Тест Symfony3</h3>
         </div>
         {% block body %}{% endblock %}
