@@ -1,0 +1,12 @@
+admin_feedback_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Feedback:index" }
+    methods:  GET
+
+admin_feedback_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Feedback:show" }
+    methods:  GET
+
+
+

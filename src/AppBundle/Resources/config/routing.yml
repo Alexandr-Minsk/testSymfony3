@@ -1,3 +1,7 @@
+app_admin_feedback:
+    resource: "@AppBundle/Resources/config/routing/feedback.yml"
+    prefix:   /admin/feedback
+
 index:
     path:     /
     defaults: { _controller: AppBundle:Home:index }
