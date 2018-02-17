@@ -10,7 +10,7 @@
         {{ include('AppBundle:block:category.html.twig', { categories : popularCategories}) }}
 
         <h3>Акции хиты и новинки</h3>
-        {{ include('AppBundle:block:product.html.twig', { products : specialProducts}) }}
+        {{ include('AppBundle:block:product.html.twig', { pagination : specialProducts}) }}
 
 
 {% endblock %}

@@ -11,14 +11,21 @@ use Symfony\Component\HttpFoundation\Request;
 
 class HomeController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $popularCategories = $em->getRepository(Category::class)->findBy([], [], 3, rand(0,6));
         $specialProducts = $em->getRepository(Product::class)->findBy([], [], 12, rand(0,88));
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $specialProducts, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            8/*limit per page*/
+        );
         return $this->render('AppBundle:Home:index.html.twig', array(
             'popularCategories' => $popularCategories,
-            'specialProducts' => $specialProducts,
+            'specialProducts' => $pagination,
             'page' => 'home'
         ));
     }
