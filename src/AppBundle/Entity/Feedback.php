@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Feedback
@@ -26,6 +27,7 @@ class Feedback
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -33,6 +35,7 @@ class Feedback
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      */
     private $phone;
 
@@ -40,6 +43,7 @@ class Feedback
      * @var string
      *
      * @ORM\Column(name="message", type="text", nullable=true)
+     * @Assert\NotBlank()
      */
     private $message;
 

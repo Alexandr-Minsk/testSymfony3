@@ -35,8 +35,10 @@ class HomeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $feedback = new Feedback();
         $feedbackForm = $this->createForm(FeedbackType::class, $feedback);
-        if ($request->isMethod($request::METHOD_POST)){
-            $feedbackForm->handleRequest($request);
+
+        $feedbackForm->handleRequest($request);
+        if ($feedbackForm->isSubmitted() && $feedbackForm->isValid()) {
+            $feedback = $feedbackForm->getData();
             $em->persist($feedback);
             $em->flush();
             return $this->render('AppBundle:Home:feedbackSuccess.html.twig', array(
