@@ -6,6 +6,7 @@ use AppBundle\Entity\Category;
 use AppBundle\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CatalogController extends Controller
 {
@@ -26,10 +27,10 @@ class CatalogController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $category = $em->getRepository(Category::class)->findOneBySlug($categorySlug);
-        $products = $em->getRepository(Product::class)->findBy([
-            'categoryId' => $category->getId(),
-            'enabled' => true
-        ]);
+        if(!$category){
+            throw new NotFoundHttpException();
+        }
+        $products = $category->getProducts();
 
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -48,8 +49,13 @@ class CatalogController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $category = $em->getRepository(Category::class)->findOneBySlug($categorySlug);
+        if(!$category){
+            throw new NotFoundHttpException();
+        }
         $product = $em->getRepository(Product::class)->findOneBySlug( str_replace('.html', '', $productSlug));
-
+        if(!$product){
+            throw new NotFoundHttpException();
+        }
 
         return $this->render('AppBundle:Catalog:product.html.twig', array(
             'category' => $category,
